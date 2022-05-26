@@ -1,4 +1,5 @@
-import random
+from webbrowser import get
+
 
 class sistemLogin:
     def __init__(self, email, password):
@@ -6,11 +7,12 @@ class sistemLogin:
         self.password = password
         self.data = {
             "Tito" : {
-                "nama"      : "Agustinus Adven Christo",
-                "email" 	: "Tito@undip.com",
-                "password"  : "1234",
-                "level"     : "17",
-                "role"  	: "Kelas 12",
+                "nama"          : "Agustinus Adven Christo",
+                "namapanggilan" : "Tito",
+                "email" 	    : "Tito@undip.com",
+                "password"      : "1234",
+                "level"         : "17",
+                "role"  	    : "Kelas 12",
         	}
     	}
 		
@@ -26,17 +28,13 @@ class sistemLogin:
     def ceklogin(self):
         get_data = self.checkCredentials()
         if get_data:
-            print("\nWelcome ", get_data['nama'])
-            print("Logged in as email:", get_data['email'])
             return True
         else:
-            print("\nLogin Gagal!\n")
             return False
 
-    def datapengguna(self):
-        get_profil = self.checkCredentials()
-        print("Nama  : ", get_profil['nama'])
-        print("Kelas : ", get_profil['role'])
-        print("Level : ", get_profil['level'])
+    def sambutan(self):
+        get_coba = self.checkCredentials()
+        sambutanawal = get_coba['nama']    
+        return sambutanawal
 
                       

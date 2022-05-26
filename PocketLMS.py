@@ -86,17 +86,17 @@ def PanggilJadwal():
 def PanggilAbsen():
         # Fungsi VerifikasiAbsen untuk menverifikasi inputan user mengenai kode absen
     def VerifikasiAbsen():
-        VerifikasiKodeAbsen = int(InputKodeAbsen.get())
-    
+        VerifikasiKodeAbsen = InputKodeAbsen.get()
+
         if(VerifikasiKodeAbsen == KodeAbsenGenerator) :
-            mb.showinfo("Berhasil","Absen Berhasil")
+            mb.showinfo("Absen Berhasil","Absen Telah Tercatat!")
             Absen.destroy()
 
         elif(VerifikasiKodeAbsen == "") :
             mb.showinfo("Peringatan", "Silahkan masukkan kode absen!")
 
         else :
-            mb.showinfo("Peringatan","Kode absen salah!")
+            mb.showinfo("Absen Gagal","Kode absen salah!")
 
 
 
@@ -126,7 +126,7 @@ def PanggilAbsen():
 
 
     # Generator random kode absen
-    KodeAbsenGenerator = (random.randint(1, 9))
+    KodeAbsenGenerator = str((random.randint(1, 9)))
     
      
      
@@ -263,36 +263,46 @@ def PanggilTodoList():
     # Menjalankan program
     ToDoList.mainloop()
 
-def PanggilProfil():
-    Profil = Tk()
-    Profil.title("Pocket LMS")
-    Profil.config(bg='#223441')
-    Profil.resizable(width=False, height=False)
+def PanggilInfo():
+    Info = Tk()
+    Info.title("Pocket LMS")
+    Info.config(bg='#223441')
+    Info.resizable(width=False, height=False)
 
     LebarJendelaAplikasi = 320
     TinggiJendelaAplikasi = 330
 
-    LebarLayarPerangkat = Profil.winfo_screenwidth()
-    TinggiLayarPerangkat = Profil.winfo_screenheight()
+    LebarLayarPerangkat = Info.winfo_screenwidth()
+    TinggiLayarPerangkat = Info.winfo_screenheight()
     #----------------------------------------------------------------------------------------------------#
 
     #Mencari titik tengah pada layar dan Menset window program di tengah layar user
     center_x = int(LebarLayarPerangkat/2 - LebarJendelaAplikasi / 2)
     center_y = int(TinggiLayarPerangkat/2 - TinggiJendelaAplikasi / 2)
-    Profil.geometry(f'{LebarJendelaAplikasi}x{TinggiJendelaAplikasi}+{center_x}+{center_y}')
+    Info.geometry(f'{LebarJendelaAplikasi}x{TinggiJendelaAplikasi}+{center_x}+{center_y}')
 
 
 
+    # FrameContent sebagai tempat content absensi
+    FrameContent = Frame(Info, bg="#223441")
+    FrameContent.pack(pady= 100)
+
+    Label(FrameContent, bg='#223441', fg='#F5F5F5', font = ('calibri', 14, 'bold'), text="Info Aplikasi").pack()
+    Label(FrameContent, bg='#223441', fg='#F5F5F5', font = ('calibri', 12), text="Pocket LMS (Learning Management System)").pack()
+    Label(FrameContent, bg='#223441', fg='#F5F5F5', font = ('calibri', 12), text="Versi : 1.0 Beta Version").pack()
+    Label(FrameContent, bg='#223441', fg='#F5F5F5', font = ('calibri', 12), text="Desktop Mode").pack()
+    
 
 
-    Profil.mainloop()
+
+    Info.mainloop()
 
 
 
 
 # Variabel Gambar
 IconHeaderPocketLMS = ImageTk.PhotoImage(Image.open('HeaderPocketLMS.jpg'))
-IconProfil = ImageTk.PhotoImage(Image.open('Profil.png'))
+IconProfil = ImageTk.PhotoImage(Image.open('Info.png'))
 IconTDL = ImageTk.PhotoImage(Image.open('ToDoList.png'))
 IconJadwal = ImageTk.PhotoImage(Image.open('Jadwal.png'))
 IconAbsen = ImageTk.PhotoImage(Image.open('Absen.png'))
@@ -311,7 +321,7 @@ FrameAplikasi.pack(fill= BOTH)
 TombolJadwal = Button(FrameAplikasi, text="Jadwal", image = IconJadwal, height = 50, width = 50, command = PanggilJadwal) #Icon Jadwal
 TombolJadwal.pack(side=LEFT, padx= 10)
 
-TombolProfil = Button(FrameAplikasi, text="Absen", image = IconProfil, height = 50, width = 50, command = PanggilProfil) #Icon Profil
+TombolProfil = Button(FrameAplikasi, text="Absen", image = IconProfil, height = 50, width = 50, command = PanggilInfo) #Icon Profil
 TombolProfil.pack(side=RIGHT, padx= 10)
 
 TombolAbsen = Button(FrameAplikasi, text="ToDoList", image = IconAbsen, height = 50, width = 50, command = PanggilAbsen) #Icon Absen  
@@ -322,12 +332,11 @@ TombolToDoList.pack(side=RIGHT, padx= 10)
 
 
 # Program berjalan
-# Algoritma program, HalamanLogin -> PocketLMS (Jika True)
+# Algoritma program, Loading -> HalamanLogin -> PocketLMS (Jika True)
 HalamanLogin.mainloop()
 if(VerifikasiLogin==True):
-    PocketLMS.mainloop()
     HalamanLogin.destroy()
 else:
-    print("Fungsi Berjalan!")
+    False
 # Selesai
 # Terima kasih

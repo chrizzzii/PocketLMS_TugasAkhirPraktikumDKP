@@ -1,7 +1,6 @@
 #Import Module
 from tkinter import *
 from tkinter import messagebox as mb
-from time import strftime
 from sistemLogin import sistemLogin
 from PIL import ImageTk,Image
 
@@ -11,6 +10,8 @@ def VerifikasiLogin():
     password = InputPassword.get()
     infologin = sistemLogin(username,password)
     loginsukses = infologin.ceklogin()
+    panggilsambutan = infologin.sambutan()
+
  
     if(username == "" and password == "") :
         mb.showinfo("Peringatan", "Silahkan masukkan Username dan Password Anda!")
@@ -18,11 +19,11 @@ def VerifikasiLogin():
  
     elif(loginsukses):
  
-        mb.showinfo("Berhasil","Login Berhasil")
+        mb.showinfo("Login Berhasil","Halo " + panggilsambutan)
         HalamanLogin.destroy()
  
     else :
-        mb.showinfo("Peringatan","Username atau Password Salah!")
+        mb.showinfo("Login Gagal","Username atau Password Salah!")
 
 
 # Program Utama
@@ -68,24 +69,7 @@ InputPassword.config(show="*")
  
 # Menampilkan dan mengatur posisi serta fungsi tombol pada UI 
 Button(HalamanLogin, text="Login", command=VerifikasiLogin ,height = 1, width = 10).place(x=25, y=100)
-
-
-
-
-# Fungsi jam
-class clock:
-    def __init__(self):
-        self.jam()
-
-    def jam(self):
-        string = strftime('%H:%M:%S %p')
-        self.MunculinJam.config(text = string)
-        self.MunculinJam.after(1000, self.jam)
-    MunculinJam = Label(HalamanLogin, bg='#223441', fg='#F5F5F5', 
-                font = ('calibri', 10, 'bold'))
-    MunculinJam.place(x=190, y=100)
-Clock = clock()    
-
+ 
 
 
 
