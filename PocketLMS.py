@@ -331,12 +331,10 @@ TombolToDoList = Button(FrameAplikasi, text="Profil", image = IconTDL, height = 
 TombolToDoList.pack(side=RIGHT, padx= 10)
 
 
-# Program berjalan
-# Algoritma program, Loading -> HalamanLogin -> PocketLMS (Jika True)
+# Program Berjalan
 HalamanLogin.mainloop()
 if(VerifikasiLogin==True):
     HalamanLogin.destroy()
 else:
     False
-# Selesai
-# Terima kasih
+# Program Selesai
