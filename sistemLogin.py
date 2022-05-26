@@ -1,6 +1,3 @@
-from webbrowser import get
-
-
 class sistemLogin:
     def __init__(self, email, password):
         self.email = email 
