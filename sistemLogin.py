@@ -1,9 +1,9 @@
 class sistemLogin:
-    def __init__(self, username, password):
-        self.username = username 
+    def __init__(self, email, password):
+        self.email = email 
         self.password = password
         self.data = {
-            "Tito" : {
+            "tito@gmail.com" : {
                 "nama"          : "Agustinus Adven Christo",
                 "namapanggilan" : "Tito",
                 "email" 	    : "Tito@undip.com",
@@ -13,7 +13,7 @@ class sistemLogin:
 		
     def cekinputan(self):
     	for value in self.data:
-        	if value == self.username:
+        	if value == self.email:
                     get_data_user = self.data[value]
                     if self.password == get_data_user['password']:
                         return get_data_user
