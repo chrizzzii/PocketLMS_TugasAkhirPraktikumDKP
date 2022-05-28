@@ -10,7 +10,6 @@ def VerifikasiLogin():
     password = InputPassword.get()
     infologin = sistemLogin(username,password)
     loginsukses = infologin.ceklogin()
-    panggilsambutan = infologin.sambutan()
 
  
     if(username == "" and password == "") :
@@ -19,7 +18,7 @@ def VerifikasiLogin():
  
     elif(loginsukses):
  
-        mb.showinfo("Login Berhasil","Halo " + panggilsambutan)
+        mb.showinfo("Login Berhasil","Klik Tombol OK!")
         HalamanLogin.destroy()
  
     else :
